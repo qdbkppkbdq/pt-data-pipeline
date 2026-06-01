@@ -1,0 +1,38 @@
+stage: proxy_pretrain_v0
+
+framework:
+  name: litgpt
+  reason: "minimal hackable proxy framework; formal large-scale stack deferred"
+
+runs:
+  - name: smoke_tiny_code_1gpu
+    purpose: "validate data/tokenizer/train/checkpoint/resume"
+    model_size: tiny
+    target_params: "30M-60M"
+    data_mixture: code_only
+    seq_len: 1024
+    max_tokens: 100000000
+
+  - name: proxy_small_code_math
+    purpose: "compare code-only vs code+math"
+    model_size: small
+    target_params: "100M-150M"
+    data_mixture: code_math
+    seq_len: 2048
+    max_tokens: 300000000
+
+  - name: proxy_small_code_math_web
+    purpose: "test balanced mixture stability"
+    model_size: small
+    target_params: "100M-150M"
+    data_mixture: code_math_web
+    seq_len: 2048
+    max_tokens: 300000000
+
+  - name: scale_medium_throughput
+    purpose: "multi-node throughput and failure test"
+    model_size: medium
+    target_params: "250M-400M"
+    data_mixture: code_math_web
+    seq_len: 2048
+    max_tokens: 100000000

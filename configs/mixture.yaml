@@ -1,0 +1,38 @@
+buckets:
+  code:
+    sources:
+      - bigcode
+    weight: 0.50
+
+  math:
+    sources:
+      - openwebmath
+    weight: 0.20
+
+  english_web:
+    sources:
+      - fineweb_edu_sample_350BT
+    weight: 0.20
+
+  chinese_web:
+    sources:
+      - fineweb2_cmn_Hani
+    weight: 0.10
+
+  agent_like:
+    sources: []
+    weight: 0.00
+
+default_mixtures:
+  code_only:
+    code: 1.0
+
+  code_math:
+    code: 0.75
+    math: 0.25
+
+  code_math_web:
+    code: 0.50
+    math: 0.20
+    english_web: 0.20
+    chinese_web: 0.10

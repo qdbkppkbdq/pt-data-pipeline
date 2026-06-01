@@ -1,0 +1,22 @@
+project:
+  root: /mnt/kai_kpfs/weilai/train/pt-data-pipeline
+
+env:
+  venv: /mnt/kai_kpfs/weilai/train/pt-data-pipeline/.venv
+
+dataset:
+  root: /mnt/kai_kpfs/weilai/dataset
+  raw: /mnt/kai_kpfs/weilai/dataset/raw
+  fineweb_edu: /mnt/kai_kpfs/weilai/dataset/raw/fineweb_edu_sample_350BT
+  fineweb2_cmn_Hani: /mnt/kai_kpfs/weilai/dataset/raw/fineweb2_cmn_Hani
+  openwebmath: /mnt/kai_kpfs/weilai/dataset/raw/openwebmath
+  bigcode: /mnt/kai_kpfs/weilai/dataset/raw/bigcode
+
+outputs:
+  manifests: /mnt/kai_kpfs/weilai/train/pt-data-pipeline/data/manifests
+  stage: /mnt/kai_kpfs/weilai/train/pt-data-pipeline/data/stage
+  quarantine: /mnt/kai_kpfs/weilai/train/pt-data-pipeline/data/quarantine
+  reports: /mnt/kai_kpfs/weilai/train/pt-data-pipeline/data/reports
+  tokenized: /mnt/kai_kpfs/weilai/train/pt-data-pipeline/data/tokenized
+  val: /mnt/kai_kpfs/weilai/train/pt-data-pipeline/data/val
+  checkpoints: /mnt/kai_kpfs/weilai/train/pt-data-pipeline/models/checkpoints
