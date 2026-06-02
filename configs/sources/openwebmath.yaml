@@ -1,0 +1,44 @@
+schema_version: source_registry_v1
+source_id: openwebmath
+display_name: OpenWebMath
+status: usable
+
+raw:
+  root: /mnt/kai_kpfs/weilai/dataset/raw/openwebmath
+  format: parquet
+  path_globs:
+    - data/*.parquet
+  manifest: data/manifests/raw_files_v0.jsonl
+
+read:
+  text_field: text
+  id_field: url
+  metadata_fields:
+    - url
+    - date
+    - metadata
+
+default_bucket: math
+bucket_mapping: {}
+
+language:
+  mode: fixed
+  value: math_web
+  known_values:
+    - math_web
+
+cleaning:
+  profile: webmath_clean_basic_v1
+
+sampling:
+  strategy: per_source
+  default_train_docs_per_group: 2000
+  default_val_docs_per_group: 200
+  split_strategy: deterministic_shuffle
+
+known_issues:
+  - boilerplate
+  - malformed_latex
+  - duplicate_math_pages
+  - too_short
+  - too_long

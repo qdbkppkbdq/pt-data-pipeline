@@ -1,0 +1,50 @@
+schema_version: source_registry_v1
+source_id: fineweb_edu_sample_350BT
+display_name: FineWeb Edu Sample 350BT
+status: usable
+
+raw:
+  root: /mnt/kai_kpfs/weilai/dataset/raw/fineweb_edu_sample_350BT
+  format: parquet
+  path_globs:
+    - sample/350BT/*.parquet
+  manifest: data/manifests/raw_files_v0.jsonl
+
+read:
+  text_field: text
+  id_field: id
+  metadata_fields:
+    - id
+    - dump
+    - url
+    - file_path
+    - language
+    - language_score
+    - token_count
+    - score
+    - int_score
+
+default_bucket: english_web
+bucket_mapping: {}
+
+language:
+  mode: field
+  field: language
+  known_values:
+    - en
+
+cleaning:
+  profile: web_clean_basic_v1
+
+sampling:
+  strategy: per_source
+  default_train_docs_per_group: 2000
+  default_val_docs_per_group: 200
+  split_strategy: deterministic_shuffle
+
+known_issues:
+  - boilerplate
+  - low_quality_web
+  - duplicate_web_pages
+  - too_short
+  - too_long

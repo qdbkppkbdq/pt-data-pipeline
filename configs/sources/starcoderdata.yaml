@@ -1,0 +1,57 @@
+schema_version: source_registry_v1
+source_id: starcoderdata
+display_name: StarCoderData
+status: usable
+
+raw:
+  root: /mnt/kai_kpfs/weilai/dataset/raw/bigcode/starcoderdata
+  format: parquet
+  path_globs:
+    - "*/*.parquet"
+  manifest: data/manifests/starcoderdata_files_v0.tsv
+
+read:
+  text_field: content
+  id_field: id
+  metadata_fields:
+    - max_stars_repo_path
+    - max_stars_repo_name
+    - max_stars_count
+    - id
+
+default_bucket: code
+bucket_mapping:
+  language:
+    markdown: docs
+    default: code
+
+language:
+  mode: path_parent
+  known_values:
+    - java
+    - javascript
+    - go
+    - cpp
+    - c
+    - html
+    - css
+    - json
+    - python
+    - markdown
+
+cleaning:
+  profile: code_clean_basic_v1
+
+sampling:
+  strategy: per_language
+  default_train_docs_per_group: 2000
+  default_val_docs_per_group: 200
+  split_strategy: deterministic_shuffle
+
+known_issues:
+  - generated_or_vendor_path
+  - secret_like
+  - too_short
+  - too_long
+  - very_long_line
+  - too_many_control_chars

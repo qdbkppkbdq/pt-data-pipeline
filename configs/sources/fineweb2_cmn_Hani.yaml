@@ -1,0 +1,53 @@
+schema_version: source_registry_v1
+source_id: fineweb2_cmn_Hani
+display_name: FineWeb2 Chinese cmn_Hani
+status: usable
+
+raw:
+  root: /mnt/kai_kpfs/weilai/dataset/raw/fineweb2_cmn_Hani
+  format: parquet
+  path_globs:
+    - data/cmn_Hani/train/*.parquet
+  manifest: data/manifests/raw_files_v0.jsonl
+
+read:
+  text_field: text
+  id_field: id
+  metadata_fields:
+    - id
+    - dump
+    - url
+    - date
+    - file_path
+    - language
+    - language_score
+    - language_script
+    - minhash_cluster_size
+    - top_langs
+
+default_bucket: chinese_web
+bucket_mapping: {}
+
+language:
+  mode: fixed
+  value: cmn_Hani
+  field: language
+  known_values:
+    - cmn_Hani
+
+cleaning:
+  profile: web_clean_basic_v1
+
+sampling:
+  strategy: per_source
+  default_train_docs_per_group: 2000
+  default_val_docs_per_group: 200
+  split_strategy: deterministic_shuffle
+
+known_issues:
+  - traditional_simplified_mix
+  - boilerplate
+  - low_quality_web
+  - duplicate_web_pages
+  - too_short
+  - too_long

@@ -447,6 +447,24 @@ git commit -m "..."
 git push
 ```
 
+Standard remote validation workflow:
+
+```bash
+# 1. Commit and push local code first.
+git push
+
+# 2. Validate from a fresh remote clone on the data processing machine.
+bash scripts/remote_validate_from_git_v1.sh -- \
+  python3 scripts/validate_source_registry_v1.py \
+    --config-dir configs/sources \
+    --check-paths
+```
+
+Use this workflow when a change needs access to shared storage, raw data,
+the prepared tokenizer, or the data-machine `.venv`. The remote validation
+must clone from git instead of reusing the mutable shared working tree, so the
+test proves that pushed code is sufficient to reproduce the result.
+
 Data processing machine:
 
 ```bash
