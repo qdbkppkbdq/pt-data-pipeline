@@ -6,11 +6,7 @@ This document captures the current working method, environment topology, and pro
 
 ## Current State
 
-The repo is on `main` and the latest pushed commit is:
-
-```text
-7af67b7 add source registry validation workflow
-```
+The repo is on `main`. Treat `main` on GitHub as the source of truth for fresh-clone validation.
 
 The v0/v1 data pipeline already has a working path:
 
@@ -42,7 +38,7 @@ Recently completed:
   - `scripts/build_manifest_v1.py`
   - output: `data/manifests/source_registry_v1/`
   - report: `data/reports/manifest_v1.md`
-- Remote validation was run from a fresh clone on `guangzhoujump` and passed with:
+- Source Registry remote validation was run from a fresh clone on `guangzhoujump` and passed with:
 
 ```text
 sources: 4
@@ -50,6 +46,17 @@ check_paths: true
 missing_roots: []
 ok: true
 ```
+
+Manifest v1 fresh-clone smoke validation was also run on `guangzhoujump`:
+
+```text
+sources: 4
+files: 20
+schema_version: manifest_v1
+ok: true
+```
+
+A larger bucket check with 100 files per source produced 400 `status=ok` and `trainable=true` manifest rows. A markdown-specific StarCoderData probe confirmed `language=markdown` maps to `bucket=docs`.
 
 ## Environments
 
