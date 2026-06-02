@@ -8,7 +8,7 @@ raw:
   format: parquet
   path_globs:
     - "*/*.parquet"
-  manifest: data/manifests/starcoderdata_files_v0.tsv
+  manifest: data/manifests/source_registry_v1/starcoderdata.jsonl
 
 read:
   text_field: content

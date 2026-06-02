@@ -21,7 +21,7 @@ KNOWN_BUCKETS = {
 }
 
 KNOWN_STATUSES = {"usable", "metadata_only", "probe_only", "disabled"}
-KNOWN_RAW_FORMATS = {"parquet", "jsonl", "tree"}
+KNOWN_RAW_FORMATS = {"parquet", "jsonl", "txt", "tree"}
 KNOWN_LANGUAGE_MODES = {"fixed", "field", "path_parent"}
 KNOWN_SAMPLING_STRATEGIES = {"per_source", "per_language"}
 KNOWN_SPLIT_STRATEGIES = {"deterministic_shuffle"}

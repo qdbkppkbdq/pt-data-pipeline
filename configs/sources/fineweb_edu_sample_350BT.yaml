@@ -8,7 +8,7 @@ raw:
   format: parquet
   path_globs:
     - sample/350BT/*.parquet
-  manifest: data/manifests/raw_files_v0.jsonl
+  manifest: data/manifests/source_registry_v1/fineweb_edu_sample_350BT.jsonl
 
 read:
   text_field: text
